@@ -18,7 +18,7 @@ def class_distribution(data):
     distribution = data[4].value_counts()
     return distribution
 
-def class_histogram(data):
+def class_histogram(name, data):
     # Plot histogram of class distribution
     for iris_class in data[4].unique():
         subset = data[data[4] == iris_class]
@@ -27,7 +27,7 @@ def class_histogram(data):
         plt.xlabel("Sepal Length")
         plt.ylabel("Frequency")
         plt.title("Class Histogram")
-        plt.savefig("class_histogram_" + iris_class + ".png")
+        plt.savefig("./iris-data/histograms/" + name + "_class_histogram_" + iris_class + ".png")
         plt.clf()
 
 def split_data(data, sample_size_percentage=60):
@@ -37,17 +37,21 @@ def split_data(data, sample_size_percentage=60):
     testing_data = data.drop(training_data.index)
     return training_data, testing_data
 
-def main():
-    data = import_data()
+def print_data(name, data):
     print(calculate_summary_statistics(data))
     print(class_distribution(data))
-    class_histogram(data)   
+    class_histogram(name, data)
+
+def main():
+    data = import_data()
+    print_data("FullDataset", data)
 
     training_data, testing_data = split_data(data)
     print("Training Data:")
-    print(training_data)
+    print_data("TrainingData", training_data)
+
     print("Testing Data:")
-    print(testing_data)
+    print_data("TestingData", testing_data)
 
 if __name__ == "__main__":
     main()
