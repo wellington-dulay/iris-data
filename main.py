@@ -38,6 +38,7 @@ def split_data(data, sample_size_percentage=60):
     return training_data, testing_data
 
 def print_data(name, data):
+    # Print data and statistics
     print(calculate_summary_statistics(data))
     print(class_distribution(data))
     class_histogram(name, data)
@@ -48,10 +49,12 @@ def main():
 
     training_data, testing_data = split_data(data)
     print("Training Data:")
-    print_data("TrainingData", training_data)
+    print_data("TrainingData", training_data,)
 
     print("Testing Data:")
     print_data("TestingData", testing_data)
+
+    user_feature = input("Enter your feature: ")
 
 if __name__ == "__main__":
     main()
