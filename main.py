@@ -1,6 +1,10 @@
 import pandas as pd
 
-data = pd.read_csv("iris-data\iris\iris.data", header=None)
+def import_data(path):
+    # Load the dataset
+    data = pd.read_csv(path, header=None)
+    return data
 
-print(data.head())
-print(data.describe())
+def main():
+    data = import_data("iris-data/iris/iris.data")
+    print(data.head())
