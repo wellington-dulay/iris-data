@@ -9,7 +9,8 @@ def import_data():
 
 def main():
     data = import_data()
-    print(data.head())
+    # Generate and print summary statistics
+    print(data.describe())
 
 if __name__ == "__main__":
     main()
